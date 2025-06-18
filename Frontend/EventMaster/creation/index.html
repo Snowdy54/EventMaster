@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сайт для помощи в организации и нахождении мероприятий в ВУЗе">
+    <title>EventMaster | Организатор мероприятий</title>
+    <style>
+        @font-face {
+            font-family: 'Bounded';
+            src: url('../fonts/Bounded-Regular.woff') format('woff'),
+                url('../fonts/Bounded-Variable.woff') format('woff'),
+                url('../fonts/Bounded-Black.woff') format('woff'),
+                url('../fonts/Bounded-ExtraLight.woff') format('woff');
+            font-display: swap;
+        }
+        body{
+            font-family: 'Bounded', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="header-nav">
+            <a href="../index.html" class="logo"><p>ВУЗ Афиша</p></a>
+            <ul class="nav-list">
+                <li class="header-create-event"><a href="index.html"><p><img src="../img/plus.svg" class="plus-img" alt="Плюс">Создать мероприятие</p></a></li>
+                <li class="header-options"><button><img src="../img/three-dots.svg" alt="Настройки"></button></li>
+                <li class="header-notifications"><button><img src="../img/notifications.svg" alt="Колокольчик"></button></li>
+                <li class="header-profile"><a href="../account/index.html"><img src="../img/account.svg" alt="Профиль"></a></li>
+            </ul>
+        </nav>
+        <div class="notifications-dropdown">
+            <div class="notifications-content">
+                <div class="notification-item">
+                    <p>Нет новых уведомлений.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav class="creation-tabs">
+            <button class="tab-button tab-button-1 active" data-tab="events">Описание события</button>
+            <button class="tab-button tab-button-2" data-tab="stats">Анкета для регистрации</button>
+            <button class="tab-button tab-button-3" data-tab="chats">Настройка билетов</button>
+            <button class="tab-button tab-button-4" data-tab="profile">Публикация</button>
+        </nav>
+        <section class="discription-form active">
+            <div class="creation-h1"><h1>Создание мероприятия</h1></div>
+            <ul class="container-list">
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Название мероприятия</label>
+                        <input type="text" id="event-name" class="form-input form-input-name" placeholder="Введите название"> 
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Краткое описание</label>
+                        <textarea id="event-short-description" class="form-input form-input-short-description" placeholder="Введите краткое описание"></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Подробное описание</label>
+                        <textarea id="event-full-description" class="form-input form-input-full-description" placeholder="Введите подробное описание"></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-cover">Выберите изображение для обложки мероприятия</label>
+                        <div class="file-zone">
+                            <label class="drop-file-zone">
+                                <input type="file" id="event-cover" class="drop-file">
+                                <div class="drop-file-content">
+                                    <div class="file-text">
+                                        Выберите файл
+                                        <span class="drop-down-arrow"></span>
+                                    </div>
+                                    <div class="file-hint">или перетащите файл сюда</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-cover">Выберите дополнительные изображения</label>
+                        <div class="file-zone">
+                            <label class="drop-file-zone">
+                                <input type="file" class="drop-file" multiple>
+                                <div class="drop-file-content">
+                                    <div class="file-text">
+                                        Выберите файл
+                                        <span class="drop-down-arrow"></span>
+                                    </div>
+                                    <div class="file-hint">или перетащите файл сюда</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-cover">Формат проведения мероприятия:</label>
+                        <div class="mode-selector">
+                            <div class="mode-option">
+                                <input type="radio" id="online-mode" name="event-mode" value="online" checked>
+                                <label for="online-mode">
+                                <span class="checkmark"></span>
+                                Онлайн
+                                </label>
+                            </div>
+                            <div class="mode-option">
+                                <input type="radio" id="offline-mode" name="event-mode" value="offline">
+                                <label for="offline-mode">
+                                <span class="checkmark"></span>
+                                Офлайн
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Укажите место проведения</label>
+                        <input type="text" id="event-place" class="form-input form-input-place" placeholder="Город, точный адрес">
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Укажите ВУЗ:</label>
+                        <input type="text" id="event-university" class="form-input form-input-university" placeholder="Университет">
+                    </div>
+                </li>
+                <li>
+                    <label for="date-and-time">Дата и время проведения:</label>
+                    <div class="container-cell container">
+                        <!-- Выбор даты -->
+                        <div class="selector" id="date-selector">
+                        <div class="row">
+                            <span class="arrow" data-type="month" data-dir="up">▲</span>
+                            <div class="value" data-type="month">Март</div>
+                            <span class="arrow" data-type="month" data-dir="down">▼</span>
+                        </div>
+                        <div class="row">
+                            <span class="arrow" data-type="day" data-dir="up">▲</span>
+                            <div class="value" data-type="day">15</div>
+                            <span class="arrow" data-type="day" data-dir="down">▼</span>
+                        </div>
+                        <div class="row">
+                            <span class="arrow" data-type="year" data-dir="up">▲</span>
+                            <div class="value" data-type="year">2025</div>
+                            <span class="arrow" data-type="year" data-dir="down">▼</span>
+                        </div>
+                        </div>
+
+                        <!-- Выбор времени -->
+                        <div class="selector-2" id="time-selector">
+                        <div class="row">
+                            <span class="arrow" data-type="hour" data-dir="up">▲</span>
+                            <div class="value" data-type="hour">9</div>
+                            <span class="arrow" data-type="hour" data-dir="down">▼</span>
+                        </div>
+                        <div class="row">
+                            <span class="arrow" data-type="minute" data-dir="up">▲</span>
+                            <div class="value" data-type="minute">00</div>
+                            <span class="arrow" data-type="minute" data-dir="down">▼</span>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-category">Категория мероприятия:</label>
+                        <div class="event-category-select">
+                            <select class="form-input form-category-select" required>
+                                <option value="" disabled selected hidden>Категория из списка</option>
+                                <option>Фестивали</option>
+                                <option>Карьерные события</option>
+                                <option>Выставки</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="option-name">Тематика мероприятия:</label>
+                        <div class="event-theme-select">
+                            <select class="form-input form-theme-select" required>
+                                <option value="" disabled selected hidden>Тематика из списка</option>
+                                <option>Наука</option>
+                                <option>Профессия</option>
+                                <option>Культура</option>
+                                <option>Развлечения</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <h2 class="personal-data-h2">Сбор персональных и юридических данных</h2>
+            <div class="personal-data-container">
+                <ul class="personal-data-list">
+                    <li>
+                    <div class="container-cell">
+                        <label for="option-name">Организатор:</label>
+                        <input type="text" id="event-creator" class="form-input form-input-creator" placeholder="ФИО ИП, название компании">
+                    </div>
+                    </li>
+                    <li>
+                    <div class="container-cell">
+                        <label for="option-name">Юридический адрес или прописка:</label>
+                        <input type="text" id="event-legal-address" class="form-input form-input-legal-address" placeholder="Город, точный адрес">
+                    </div>
+                    </li>
+                    <li>
+                    <div class="container-cell last-cell">
+                        <label for="option-name">E-mail для вопросов по поводу сбора данных:</label>
+                        <input type="text" id="event-email" class="form-input form-input-email" placeholder="vuz@afisha.ru">
+                    </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="end-buttons">
+                <div class="continue-button-container">
+                    <button class="continue-button"><span class="continue-button-text">Продолжить</span></button>
+                </div>
+                <div class="creation-buttons">
+                    <ul class="end-buttons-list">
+                        <li><button class="cancel-creation-button"><span>Отменить создание</span></button></li>
+                        <li><button class="save-data"><span>Сохранить черновик</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="registration-form">
+            <ul class="registration-container-list">
+                <li>
+                    <div class="container-cell">
+                    <label for="event-name">Текст перед подписанием анкеты гостем:</label>
+                    <textarea id="event-form-for-people" class="form-input form-for-people" placeholder="Информационный текст, который гость увидит перед заполнением анкеты"></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-name">Поля по умолчанию:</label>
+                        <ul class="default-fields">
+                            <li>Имя</li>
+                            <li>Фамилия</li>
+                            <li>Телефон</li>
+                            <li>E-mail</li>
+                        </ul>
+                        <button id="add-question-btn" class="default-fields-add-button">
+                            <span class="default-fields-text">Добавить вопрос для гостей?</span>
+                        </button>
+                        <div class="questions-container">
+                            <ul class="questions-list" id="questions-list">
+                                <!-- Вопросы будут добавляться сюда -->
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="end-buttons">
+                <div class="continue-button-container">
+                    <button class="continue-button"><span class="continue-button-text">Продолжить</span></button>
+                </div>
+                <div class="creation-buttons">
+                    <ul class="end-buttons-list">
+                        <li><button class="cancel-creation-button"><span>Отменить создание</span></button></li>
+                        <li><button class="save-data"><span>Сохранить черновик</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="ticket-options">
+            <b>В будущем...</b>
+        </section>
+
+        <section class="publication">
+            <ul class="publications-list">
+                <li>
+                    <div class="container-cell">
+                        <label for="event-age" class="form-event-age">Выбор возрастного ограничения:</label>
+                        <ul class="age-buttons">
+                            <li><button class="age-button">0+</button></li>
+                            <li><button class="age-button">6+</button></li>
+                            <li><button class="age-button">12+</button></li>
+                            <li><button class="age-button">16+</button></li>
+                            <li><button class="age-button">18+</button></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-cell">
+                        <label for="event-privacy" class="form-privacy">Приватность события:</label>
+                        <ul class="private-buttons">
+                            <li><button class="private-button-1">Публичное</button></li>
+                            <li><button class="private-button-2">Доступно  только по ссылке</button></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="publication-discription">
+                <p class="publication-discription-text">Перед тем, как ваше мероприятие станет доступно для всех, убедитесь, что всё заполнено верно.
+                Жмите <b>«Опубликовать»</b>, и мероприятие станет видно в каталоге!</p>
+                <p class="publication-discription-advice">При необходимости вы можете сохранить черновик и вернуться к редактированию позже.</p>
+            </div>
+            <div class="end-buttons">
+                <div class="continue-button-container">
+                    <button class="continue-button publication-button"><span class="continue-button-text">Опубликовать</span></button>
+                </div>
+                <div class="creation-buttons">
+                    <ul class="end-buttons-list">
+                        <li><button class="cancel-creation-button"><span>Отменить создание</span></button></li>
+                        <li><button class="save-data"><span>Сохранить черновик</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="promo">© 2025 “ВУЗ Афиша”</p>
+        <a href="#">vuzafisha@urfu.ru</a>
+    </footer>
+<script src="../js/header.js"></script>
+<script src="../js/data-and-time-bullshit.js"></script>
+<script src="../js/creation-button.js"></script>
+<script src="../js/questions.js"></script>
+<script src="../js/card-data.js"></script>
+</body>
+</html>

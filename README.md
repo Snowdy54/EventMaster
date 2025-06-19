@@ -4,12 +4,9 @@
 
 Как использовать?
 *ссылка на сайт* - перейти по ссылке на сам сайт.
-Fronend: 
-HTML, CSS, JavaScript (чистый)
-Backend:
-PHP
-Laravel
+Frontend: HTML, CSS, JavaScript (чистый)
+Backend: PHP, Laravel
 
 
-Frontend-разработчик: Мильчаков Андрей
-Backend-разработчики: Алеханов Данил, Карымов Макар
+Frontend-разработчик: Мильчаков Андрей.
+Backend-разработчики: Алеханов Данил, Карымов Макар.

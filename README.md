@@ -4,8 +4,8 @@
 
 Как использовать?
 *ссылка на сайт* - перейти по ссылке на сам сайт.
-Frontend: HTML, CSS, JavaScript (чистый)
-Backend: PHP, Laravel
+Frontend: HTML, CSS, JavaScript (чистый).
+Backend: PHP, Laravel.
 
 
 Frontend-разработчик: Мильчаков Андрей.

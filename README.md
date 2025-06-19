@@ -4,7 +4,7 @@
 
 Как использовать?
 
-eventmaster-urfu.ru - перейти по ссылке на сам сайт.
+https://eventmaster-urfu.ru - перейти по ссылке на сам сайт.
 
 Frontend: HTML, CSS, JavaScript (чистый).
 
